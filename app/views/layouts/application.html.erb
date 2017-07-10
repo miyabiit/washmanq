@@ -4,17 +4,23 @@
     <title>Washmanq</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
 
     <%= yield :head %>
   </head>
 
-  <body class="mdc-typography">
-    <%= render 'layouts/nav' %>
-
-    <%= yield %>
+  <body class="mdc-typography mdc-drawer-scroll-lock">
+    <div id="vue_root">
+      <%= render 'layouts/header' %>
+      <div class="content mdc-toolbar-fixed-adjust">
+        <%= render 'layouts/nav' %>
+        <main class="main-content">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
   </body>
 </html>
