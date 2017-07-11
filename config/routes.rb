@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-    
+  resources :sales, only: [:index]
+  resources :cameras, only: [:index]
+
   resources :excels, only: [:index] do
     collection do
       get :import
