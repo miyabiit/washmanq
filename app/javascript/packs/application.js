@@ -8,10 +8,14 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue'
+import {Vuetable} from 'vuetable-2'
 import NavDrawer from './nav_drawer.vue'
 import FileUpload from './file_upload.vue'
+import FileTable from './file_table.vue'
 import MessageBar from './message_bar.vue'
 
+Vue.component("vuetable", Vuetable)
+Vue.component("file-table", FileTable)
 Vue.component('nav-drawer', NavDrawer)
 Vue.component('file-upload', FileUpload)
 Vue.component('message-bar', MessageBar)
