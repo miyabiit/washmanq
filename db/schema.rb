@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704073304) do
+ActiveRecord::Schema.define(version: 20170711022545) do
 
   create_table "cources", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20170704073304) do
   create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.string "geocode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sales_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "excel_file_name"
+    t.string "excel_content_type"
+    t.integer "excel_file_size"
+    t.datetime "excel_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

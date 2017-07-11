@@ -1,0 +1,10 @@
+<% content_for(:title) { 'データインポート' } -%>
+
+<%#<%= form_for @sales_file, url: sales_files_path, method: :post, html: { multipart: true } do |f| +|%>
+<%#  <%= f.file_field :excel +|%>
+<%#<% end -+|%>
+<%#<button class="mdc-button mdc-button--raised mdc-button--primary" data-demo-no-js="">%>
+<%#  売り上げ情報Excelをアップロード%>
+<%#</button>%>
+
+<file-upload url="<%= sales_files_path %>" button-title="売り上げ情報Excelをアップロード" param-name="sales_file[excel]"></file-upload>

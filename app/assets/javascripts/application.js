@@ -13,4 +13,5 @@
 //= require jquery
 //= require rails-ujs
 //= require material-components-web/dist/material-components-web
+//= require csrf_token
 //= require_tree .

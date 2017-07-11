@@ -9,12 +9,16 @@
 
 import Vue from 'vue'
 import NavDrawer from './nav_drawer.vue'
+import FileUpload from './file_upload.vue'
+import MessageBar from './message_bar.vue'
 
 Vue.component('nav-drawer', NavDrawer)
+Vue.component('file-upload', FileUpload)
+Vue.component('message-bar', MessageBar)
+
+window.vbus = new Vue()
 
 document.addEventListener('DOMContentLoaded', () => {
-//  document.body.appendChild(document.createElement('hello'))
-//  const app = new Vue(NavDrawer).$mount('hello')
   new Vue({ el: '#vue_root' })
   mdc.autoInit()
 })

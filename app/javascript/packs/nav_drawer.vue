@@ -9,7 +9,7 @@
           <a :class="{'mdc-permanent-drawer--selected': isSelected('sales')}" class="mdc-list-item" href="/sales" data-mdc-tabindex-handled="true" tabindex="-1">
             <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">trending_up</i>統計情報
           </a>
-          <a :class="{'mdc-permanent-drawer--selected': isSelected('excels')}"  class="mdc-list-item" href="/excels" data-mdc-tabindex-handled="true" tabindex="-1">
+          <a :class="{'mdc-permanent-drawer--selected': isSelected('sales_files')}"  class="mdc-list-item" href="/sales_files" data-mdc-tabindex-handled="true" tabindex="-1">
             <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">file_upload</i>データインポート
           </a>
         </nav>
@@ -28,14 +28,6 @@ export default {
       drawer: null
     }
   },
-  computed: {
-    camerasSelected() {
-      return window.location.pathname == '/cameras'
-    },
-    salesSelected() {
-      return window.location.pathname == '/sales'
-    }
-  },
   methods: {
     isSelected(pathname) {
       return window.location.pathname == `/${pathname}`
@@ -50,12 +42,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.drawer-content {
-  display: flex;
-  flex: 1 1 auto;
-  height: 100%;
-  box-sizing: border-box;
-}
-</style>
