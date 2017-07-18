@@ -1,12 +1,30 @@
 <% content_for(:title) { 'データインポート' } -%>
 
-<%#<%= form_for @sales_file, url: sales_files_path, method: :post, html: { multipart: true } do |f| +|%>
-<%#  <%= f.file_field :excel +|%>
-<%#<% end -+|%>
-<%#<button class="mdc-button mdc-button--raised mdc-button--primary" data-demo-no-js="">%>
-<%#  売り上げ情報Excelをアップロード%>
-<%#</button>%>
 
 <file-upload url="<%= sales_files_path %>" button-title="売り上げ情報Excelをアップロード" param-name="sales_file[excel]"></file-upload>
 
-<file-table></file-table>
+<%#<file-table></file-table>%>
+
+<br/>
+<br/>
+
+<%= paginate @sales_files %>
+<table class="vuetable ui blue selectable celled stackable attached table">
+  <thead>
+    <tr>
+      <th>ファイル名</th>
+      <th>日時</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales_files.each do |sales_file| %>
+      <tr>
+        <td><%= sales_file.excel_file_name %></td>
+        <td><%= l(sales_file.created_at, format: :long) %></td>
+        <td><%= link_to 'ダウンロード', sales_file.excel.url %></td>
+      </tr>
+    <% end  %>
+  </tbody>
+</table>
+<%= paginate @sales_files %>

@@ -1,6 +1,7 @@
 class SalesFilesController < ApplicationController
   def index
     @sales_file = SalesFile.new
+    @sales_files = SalesFile.all.order(created_at: :desc).page(params[:page])
   end
 
   def create

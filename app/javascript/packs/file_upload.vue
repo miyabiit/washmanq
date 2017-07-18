@@ -42,7 +42,8 @@ export default {
           dataType: 'json'
       })
       .done(( data ) => {
-        vbus.$emit('show-message-bar', 'アップロードしました')
+        //vbus.$emit('show-message-bar', 'アップロードしました')
+        window.location.reload()
       })
       .fail(( data ) => {
         vbus.$emit('show-message-bar', 'アップロードに失敗しました')

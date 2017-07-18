@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      sales_file: "売り上げ情報ファイル"
+    attributes:
+      sales_file:
+        excel_file_name: "ファイル名"
+        excel_content_type: "コンテントタイプ"
+        excel_file_size: "ファイルサイズ"
+        excel_updated_at: "更新日時"
+        created_at: "作成日時"
+        updated_at: "更新日時"
+
