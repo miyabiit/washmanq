@@ -40,8 +40,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2'
 gem 'vuejs-rails'
-
+gem "roo", "~> 2.7.0"
+gem 'roo-xls'
 gem 'kaminari', '~> 0.17.0'
+gem 'seed-fu', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,6 +60,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
