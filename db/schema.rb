@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724050656) do
+ActiveRecord::Schema.define(version: 20170724081419) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170724050656) do
     t.integer "prepaid_sales_amount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sales_count"
     t.index ["place_id"], name: "index_spray_sales_on_place_id"
   end
 
