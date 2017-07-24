@@ -9,6 +9,30 @@
     <button @click="upload" class="mdc-button mdc-button--raised mdc-button--primary" data-demo-no-js="">
       {{ buttonTitle }}
     </button>
+
+    <div v-if="existsError" class="error-theme">
+      <br/>
+      <i class="material-icons" aria-hidden="true">error</i>
+      {{ errorMessages[0] }}
+      <span v-if="errorMessagesMore">...</span>
+    </div>
+
+    <aside :id="id + '_dialog'"
+      class="mdc-dialog"
+      role="alertdialog"
+      >
+      <div class="mdc-dialog__surface">
+        <section class="mdc-dialog__body">
+          <ul class="mdc-list">
+            <li v-for="msg in errorMessages" class="mdc-list-item">{{ msg }}</li>
+          </ul>
+        </section>
+        <footer class="mdc-dialog__footer">
+          <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">閉じる</button>
+        </footer>
+      </div>
+      <div class="mdc-dialog__backdrop"></div>
+    </aside>
   </div>
 </template>
 
@@ -21,11 +45,20 @@ export default {
   },
   data () {
     return {
-      id: -1
+      id: -1,
+      errorMessages: []
     }
   },
   created() {
     this.id = this._uid
+  },
+  computed: {
+    existsError() {
+      return this.errorMessages.length > 0
+    },
+    errorMessagesMore() {
+      return this.errorMessages.length > 1
+    }
   },
   mounted() {
     let elem = document.getElementsByName(this.paramName)[0]
@@ -43,10 +76,16 @@ export default {
       })
       .done(( data ) => {
         //vbus.$emit('show-message-bar', 'アップロードしました')
+        this.errorMessages = []
         window.location.reload()
       })
       .fail(( data ) => {
         vbus.$emit('show-message-bar', 'アップロードに失敗しました')
+        console.log(data)
+        const json = data.responseJSON
+        if (json && json.error && json.error.messages) {
+          this.errorMessages = json.error.messages
+        }
       })
       .always(( data ) => {
         document.getElementById(this.id).reset()

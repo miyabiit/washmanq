@@ -49,7 +49,7 @@ class WashSalesExcelParserA
       # read courses
       (base_col_idx .. (base_col_idx + 7)).each_with_index do |col_idx, i|
         course_sales_count = sheet.cell(row_idx, col_idx)
-        sale.wash_sale_courses << WashSaleCourse.new(course_id: i+1, sales_count: course_sales_count.to_i)
+        sale.wash_sale_courses << WashSaleCourse.new(course: Course.find(i+1), sales_count: course_sales_count.to_i)
       end
       sale.sales_count = get_value(sheet, row_idx, base_col_idx + 8, "台数")
       sales_amount = get_value(sheet, row_idx, base_col_idx + 9, '売り上げ')

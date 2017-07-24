@@ -32,11 +32,11 @@ class WashSalesExcelParserB
       base_col_idx = 8
 
       # read courses
-      base_col_idx.step(base_col_idx+8*5*10, 5).with_index do |col_idx, i|
+      base_col_idx.step(base_col_idx+5*8, 5).with_index do |col_idx, i|
         course_sales_count = sheet.cell(row_idx, col_idx)
         cash_sales_amount = sheet.cell(row_idx+1, col_idx)
         prepaid_sales_amount = sheet.cell(row_idx+2, col_idx)
-        sale.wash_sale_courses << WashSaleCourse.new(course_id: i+1, sales_count: course_sales_count.to_i, cash_sales_amount: cash_sales_amount, prepaid_sales_amount: prepaid_sales_amount)
+        sale.wash_sale_courses << WashSaleCourse.new(course: Course.find(i+1), sales_count: course_sales_count.to_i, cash_sales_amount: cash_sales_amount, prepaid_sales_amount: prepaid_sales_amount)
       end
 
       sum_base_col_idx = 130

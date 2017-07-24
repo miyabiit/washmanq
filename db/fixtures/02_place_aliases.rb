@@ -25,3 +25,10 @@ id = 1
   end
   id += 1
 end
+
+PlaceAlias.seed(:id) do |s|
+  s.id = id
+  s.place_id = 5
+  s.name = "大和桜ヶ丘"
+end
+id += 1

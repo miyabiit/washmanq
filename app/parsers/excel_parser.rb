@@ -2,13 +2,11 @@ class ExcelParser
   class << self
     def parse(file)
       xls = case file.original_filename
-            when /\.xls$/
-              Roo::Excel.new(file) # file.read?
             when /\.xlsx$/
-              Roo::Excelx.new(file) # file.read?
+              Roo::Excelx.new(file.tempfile.path) # file.read?
             end
-      xls_sheet = xls.sheet('月計')
-      case xls.sheets(0)
+      raise ExcelParseError, "#{File.extname(file.original_filename)[1..-1]}ファイルには対応していません。xlsxファイルをアップロードしてください" unless xls
+      case xls.sheets.first
       when '売上報告書（今月）'
         # wash sales pattern A
         WashSalesExcelParserA.parse(xls)
@@ -19,7 +17,7 @@ class ExcelParser
         # spray sales
         SpraySalesExcelParser.parse(xls)
       else
-        raise 'エクセルファイルの判定に失敗しました'
+        raise ExcelParseError, 'エクセルファイル種類の判定に失敗しました'
       end
     end
   end 

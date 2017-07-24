@@ -5,7 +5,14 @@ class SalesFilesController < ApplicationController
   end
 
   def create
-    SalesFile.create!(sales_file_params)
+    objs = ExcelParser.parse(params[:sales_file][:excel])
+    SalesFile.transaction do 
+      @sales_file = SalesFile.create!(sales_file_params)
+      objs.each(&:save!)
+    end
+    render status: :ok, json: @sales_file
+  rescue ExcelParseError => ex
+    render status: :unprocessable_entity, json: {error: {messages: [ex.message]}}
   end
 
   private
