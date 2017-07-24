@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718110155) do
+ActiveRecord::Schema.define(version: 20170724050656) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170718110155) do
     t.bigint "wash_sale_id", null: false
     t.bigint "course_id"
     t.integer "sales_count"
+    t.integer "cash_sales_amount"
+    t.integer "prepaid_sales_amount"
     t.index ["course_id"], name: "index_wash_sale_courses_on_course_id"
     t.index ["wash_sale_id"], name: "index_wash_sale_courses_on_wash_sale_id"
   end
