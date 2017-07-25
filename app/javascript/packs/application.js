@@ -9,14 +9,13 @@
 
 import Vue from 'vue'
 import {Vuetable} from 'vuetable-2'
+import Datepicker from 'vue-datepicker'
 import NavDrawer from './nav_drawer.vue'
 import FileUpload from './file_upload.vue'
 import FileTable from './file_table.vue'
 import MessageBar from './message_bar.vue'
 import Spinner from './spinner.vue'
-import Datepicker from 'vue-datepicker'
-
-console.log(Datepicker)
+import Monthpicker from './month_picker.vue'
 
 Vue.component("vuetable", Vuetable)
 Vue.component("file-table", FileTable)
@@ -25,6 +24,7 @@ Vue.component('file-upload', FileUpload)
 Vue.component('message-bar', MessageBar)
 Vue.component('spinner', Spinner)
 Vue.component('date-picker', Datepicker)
+Vue.component('month-picker', Monthpicker)
 
 window.vbus = new Vue()
 
