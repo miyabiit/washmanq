@@ -88,7 +88,6 @@ export default {
       })
       .fail(( data ) => {
         vbus.$emit('show-message-bar', 'アップロードに失敗しました')
-        console.log(data)
         const json = data.responseJSON
         if (json && json.error && json.error.messages) {
           this.errorMessages = json.error.messages

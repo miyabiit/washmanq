@@ -1,6 +1,5 @@
 <% content_for(:title) { '統計情報' } -%>
-<h1>Sales#index</h1>
-<p>Find me in app/views/sales/index.html.erb</p>
+<% today = Date.today -%>
+<select-summary-month :year="<%= params[:year].presence || today.year %>" :month="<%= params[:month].presence || today.month %>"></select-summary-month>
 
-<%#<date-picker :date="{time: ''}"></date-picker>%>
-<month-picker :year="2017" :month="7"></month-picker>
+<sales-summary-table></sales-summary-table>

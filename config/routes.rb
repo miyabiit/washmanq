@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :sales, only: [:index]
+  resources :sales, only: [:index] do
+    collection do
+      get ':year/:month' => 'sales#index'
+    end
+  end
   resources :cameras, only: [:index]
 
   resources :sales_files, only: [:index, :create]

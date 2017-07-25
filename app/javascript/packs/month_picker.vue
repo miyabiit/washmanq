@@ -4,7 +4,7 @@
       <span class="mdc-select__selected-text">{{year}}</span>
       <div class="mdc-simple-menu mdc-select__menu">
         <ul class="mdc-list mdc-simple-menu__items">
-          <li v-for="y in yearItems" @click="selectYear" class="mdc-list-item" role="option" tabindex="0">
+          <li v-for="y in yearItems" @click="selectYear(y)" class="mdc-list-item" role="option" tabindex="0">
             {{ y }}
           </li>
         </ul>
@@ -16,7 +16,7 @@
       <span class="mdc-select__selected-text">{{month}}</span>
       <div class="mdc-simple-menu mdc-select__menu">
         <ul class="mdc-list mdc-simple-menu__items">
-          <li v-for="m in monthItems" @click="selectMonth" class="mdc-list-item" role="option" tabindex="0">
+          <li v-for="m in monthItems" @click="selectMonth(m)" class="mdc-list-item" role="option" tabindex="0">
             {{ m }}
           </li>
         </ul>
@@ -53,8 +53,6 @@ export default {
     this.selects = []
     $('.select-year').each(function() {
       const select = new MDCSelect(this, undefined, menuFactory)
-      console.log(_this.year)
-      console.log(_this.yearItems)
       select.selectedIndex = _this.yearItems.indexOf(_this.year)
       // no resize! (resized in MDCSelect...)
       $(this).css('width', '60px')
