@@ -14,6 +14,9 @@ import FileUpload from './file_upload.vue'
 import FileTable from './file_table.vue'
 import MessageBar from './message_bar.vue'
 import Spinner from './spinner.vue'
+import Datepicker from 'vue-datepicker'
+
+console.log(Datepicker)
 
 Vue.component("vuetable", Vuetable)
 Vue.component("file-table", FileTable)
@@ -21,6 +24,7 @@ Vue.component('nav-drawer', NavDrawer)
 Vue.component('file-upload', FileUpload)
 Vue.component('message-bar', MessageBar)
 Vue.component('spinner', Spinner)
+Vue.component('date-picker', Datepicker)
 
 window.vbus = new Vue()
 
