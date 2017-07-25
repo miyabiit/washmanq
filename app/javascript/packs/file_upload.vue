@@ -6,15 +6,21 @@
       <input type="file" :name="paramName" style="display: none;">
     </form>
 
-    <button @click="upload" class="mdc-button mdc-button--raised mdc-button--primary" data-demo-no-js="">
-      {{ buttonTitle }}
-    </button>
-
-    <div v-if="existsError" class="error-theme">
-      <br/>
-      <i class="material-icons" aria-hidden="true">error</i>
-      {{ errorMessages[0] }}
-      <span v-if="errorMessagesMore">...</span>
+    <div class="mdc-layout-grid" style="margin: 0; padding: 0">
+      <div class="mdc-layout-grid__inner" style="margin: 0; padding: 0">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4" style="margin: 0; padding: 0">
+          <button @click="upload" class="mdc-button mdc-button--raised mdc-button--primary" data-demo-no-js="">
+            {{ buttonTitle }}
+          </button>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8" style="margin: 0; padding: 0">
+          <div v-if="existsError" class="error-theme">
+            <i class="material-icons" aria-hidden="true">error</i>
+            {{ errorMessages[0] }}
+            <span v-if="errorMessagesMore">...</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <aside :id="id + '_dialog'"
