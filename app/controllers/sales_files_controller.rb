@@ -8,7 +8,10 @@ class SalesFilesController < ApplicationController
     objs = ExcelParser.parse(params[:sales_file][:excel])
     SalesFile.transaction do 
       @sales_file = SalesFile.create!(sales_file_params)
-      objs.each(&:save!)
+      objs.each do |o|
+        o.destroy_duplication
+        o.save!
+      end
     end
     render status: :ok, json: @sales_file
   rescue ExcelParseError => ex

@@ -13,12 +13,14 @@ import NavDrawer from './nav_drawer.vue'
 import FileUpload from './file_upload.vue'
 import FileTable from './file_table.vue'
 import MessageBar from './message_bar.vue'
+import Spinner from './spinner.vue'
 
 Vue.component("vuetable", Vuetable)
 Vue.component("file-table", FileTable)
 Vue.component('nav-drawer', NavDrawer)
 Vue.component('file-upload', FileUpload)
 Vue.component('message-bar', MessageBar)
+Vue.component('spinner', Spinner)
 
 window.vbus = new Vue()
 

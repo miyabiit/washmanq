@@ -66,6 +66,7 @@ export default {
       let fd = new FormData(document.getElementById(this.id))
       fd.append('utf8', "✓")
       fd.append('authenticity_token', getCsrfToken())
+      vbus.$emit('show-spinner')
       $.ajax({
           url: this.url,
           type: "POST",
@@ -88,6 +89,7 @@ export default {
         }
       })
       .always(( data ) => {
+        vbus.$emit('hide-spinner')
         document.getElementById(this.id).reset()
       })
       return false
