@@ -68,6 +68,8 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-puma'
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano-npm'
 
   gem 'rails-erd'
 end

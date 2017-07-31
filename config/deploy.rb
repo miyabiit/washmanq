@@ -17,13 +17,22 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
+set :nvm_type, :user # or :system, depends on your nvm setup
+set :nvm_node, 'v6.11.1'
+set :nvm_map_bins, %w{node npm}
+
+set :npm_target_path, -> { release_path }
+set :npm_flags, '--production --silent --no-progress'
+set :npm_roles, :all
+set :npm_env_variables, {}
+
 set :default_environment, {
   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 }
 
 set :bundle_binstubs, nil
 set :linked_files, fetch(:linked_files, []).push('.env')
-set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules}
 
 set :ssh_options, {
   user: 'ec2-user',
