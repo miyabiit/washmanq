@@ -9,7 +9,6 @@
 
 import Vue from 'vue'
 import {Vuetable} from 'vuetable-2'
-import Datepicker from 'vue-datepicker'
 import NavDrawer from './nav_drawer.vue'
 import FileUpload from './file_upload.vue'
 import FileTable from './file_table.vue'
@@ -25,7 +24,6 @@ Vue.component('nav-drawer', NavDrawer)
 Vue.component('file-upload', FileUpload)
 Vue.component('message-bar', MessageBar)
 Vue.component('spinner', Spinner)
-Vue.component('date-picker', Datepicker)
 Vue.component('month-picker', Monthpicker)
 Vue.component('sales-summary-table', SalesSummaryTable)
 Vue.component('select-summary-month', SelectSummaryMonth)

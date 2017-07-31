@@ -27,8 +27,10 @@
 </template>
 
 <script>
-import {MDCSelect} from '@material/select'
-import {MDCSimpleMenu} from '@material/menu'
+// import {MDCSelect} from '@material/select'
+// import {MDCSimpleMenu} from '@material/menu'
+const MDCSelect = mdc.select.MDCSelect
+const MDCSimpleMenu = mdc.menu.MDCSimpleMenu
 
 const menuFactory = (menuEl) => {
   const menu = new MDCSimpleMenu(menuEl)
