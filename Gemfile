@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'dotenv-rails'
 gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2'
 gem 'vuejs-rails'
@@ -44,6 +45,8 @@ gem "roo", "~> 2.7.0"
 gem 'roo-xls'
 gem 'kaminari', '~> 0.17.0'
 gem 'seed-fu', '~> 2.3'
+gem 'enumerize'
+gem 'active_attr'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,6 +63,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "capistrano", "~> 3.9"
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
+
+  gem 'rails-erd'
 end
 
 group :development, :test do
