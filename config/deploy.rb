@@ -2,7 +2,7 @@
 lock "3.9.0"
 
 set :application, "washmanq"
-set :repo_url, "https://github.com/shallontecbiz/washmanq.git"
+set :repo_url, "git@github.com:shallontecbiz/washmanq.git"
 set :deploy_to, "/home/ec2-user/rails_apps/washmanq"
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :keep_releases, 3
