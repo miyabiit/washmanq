@@ -41,6 +41,7 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/nvm' 
 require 'capistrano/npm'
+require 'capistrano/yarn'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Nginx

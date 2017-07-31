@@ -26,6 +26,11 @@ set :npm_flags, '--production --silent --no-progress'
 set :npm_roles, :all
 set :npm_env_variables, {}
 
+set :yarn_target_path, -> { release_path }
+set :yarn_flags, '--production --ignore-optional --silent --no-progress'    # default
+set :yarn_roles, :all                                     # default
+set :yarn_env_variables, {}                               # default
+
 set :default_environment, {
   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 }

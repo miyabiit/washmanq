@@ -70,6 +70,7 @@ group :development do
   gem 'capistrano3-puma'
   gem 'capistrano-nvm', require: false
   gem 'capistrano-npm'
+  gem 'capistrano-yarn'
 
   gem 'rails-erd'
 end
