@@ -20,14 +20,20 @@
     </tr>
   </thead>
   <tbody>
+    <% @summaries.each do |summary| -%>
     <tr>
-      <td>ほげ</td>
-      <td>hoge</td>
-      <td>hoge</td>
-      <td>hoge</td>
-      <td>hoge</td>
-      <td>hoge</td>
-      <td>hoge</td>
+      <td><%= summary.place.name %></td>
+      <td><%= summary.sales_count&.to_s(:delimited) %></td>
+      <td> - </td>
+      <td> - </td>
+      <td><%= summary.sales_amount&.to_s(:delimited) %></td>
+      <td> - </td>
+      <td> - </td>
     </tr>
+    <% end -%>
   </tbody>
 </table>
+
+<% if @summaries.blank? %>
+  データがありません
+<% end %>

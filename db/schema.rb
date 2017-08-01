@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724081419) do
+ActiveRecord::Schema.define(version: 20170801100616) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170724081419) do
     t.datetime "excel_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sales_summaries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "place_id", null: false
+    t.string "target_month", null: false
+    t.integer "sales_count", default: 0
+    t.integer "sales_amount", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_sales_summaries_on_place_id"
   end
 
   create_table "spray_sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -81,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170724081419) do
   end
 
   add_foreign_key "place_aliases", "places"
+  add_foreign_key "sales_summaries", "places"
   add_foreign_key "spray_sales", "places"
   add_foreign_key "wash_sale_courses", "courses"
   add_foreign_key "wash_sale_courses", "wash_sales"

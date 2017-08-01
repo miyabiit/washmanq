@@ -12,6 +12,17 @@ class SalesFilesController < ApplicationController
         o.destroy_duplication
         o.save!
       end
+      if objs.present?
+        first_obj = objs.first
+        if first_obj.is_a?(SpraySale)
+          target_months = objs.map(&:target_month)
+          target_months.each do |target_month|
+            SalesSummaryCreator.create_or_update(first_obj.place, target_month)
+          end
+        else
+          SalesSummaryCreator.create_or_update(first_obj.place, first_obj.target_date)
+        end
+      end
     end
     render status: :ok, json: @sales_file
   rescue ExcelParseError => ex
