@@ -9,7 +9,7 @@ const { sync } = require('glob')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 const extname = require('path-complete-extname')
-const { env, settings, output, loadersDir } = require('./configuration.js')
+const { env, settings, output, loadersDir, resolvedModules } = require('./configuration.js')
 
 const extensionGlob = `**/*{${settings.extensions.join(',')}}*`
 const entryPath = join(settings.source_path, settings.source_entry_path)
@@ -37,7 +37,7 @@ module.exports = {
 
   plugins: [
     new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(env))),
-    new ExtractTextPlugin((env.NODE_ENV === 'production' || env.NODE_ENV === 'staging') ? '[name]-[hash].css' : '[name].css'),
+    new ExtractTextPlugin(env.NODE_ENV === 'production' ? '[name]-[hash].css' : '[name].css'),
     new ManifestPlugin({
       publicPath: output.publicPath,
       writeToFileEmit: true
@@ -49,10 +49,7 @@ module.exports = {
       vue: 'vue/dist/vue.js'
     },
     extensions: settings.extensions,
-    modules: [
-      resolve(settings.source_path),
-      'node_modules'
-    ]
+    modules: resolvedModules
   },
 
   resolveLoader: {

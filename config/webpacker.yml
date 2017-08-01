@@ -5,6 +5,12 @@ default: &default
   source_entry_path: packs
   public_output_path: packs
 
+  compile: false
+
+  # Additional paths webpack should lookup modules
+  # ['app/assets', 'engine/foo/app/assets']
+  resolved_paths: []
+
   extensions:
     - .coffee
     - .erb
@@ -25,7 +31,7 @@ development:
   <<: *default
 
   dev_server:
-    host: 0.0.0.0
+    host: localhost
     port: 8080
     https: false
 
@@ -33,6 +39,8 @@ test:
   <<: *default
 
   public_output_path: packs-test
+  # Compile webpack assets during lookup when running tests
+  compile: true
 
 staging:
   <<: *default

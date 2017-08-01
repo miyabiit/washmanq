@@ -26,3 +26,7 @@
 /node_modules
 *.swp
 *.log
+/public/assets
+/public/packs
+/public/packs-test
+/node_modules
