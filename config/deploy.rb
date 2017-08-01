@@ -27,9 +27,9 @@ set :npm_roles, :all
 set :npm_env_variables, {}
 
 set :yarn_target_path, -> { release_path }
-set :yarn_flags, '--production --ignore-optional --silent --no-progress'    # default
-set :yarn_roles, :all                                     # default
-set :yarn_env_variables, {}                               # default
+set :yarn_flags, '--production --ignore-optional --silent --no-progress'
+set :yarn_roles, :all
+set :yarn_env_variables, {}
 
 set :default_environment, {
   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
@@ -37,6 +37,7 @@ set :default_environment, {
 
 set :bundle_binstubs, nil
 set :linked_files, fetch(:linked_files, []).push('.env')
+append :linked_files, "config/puma.rb"
 set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules}
 
 set :ssh_options, {
@@ -83,6 +84,7 @@ set :ssh_options, {
 # set :puma_control_app, false
 # set :puma_default_control_app, "unix://#{shared_path}/tmp/sockets/pumactl.sock"
 # set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_conf, "#{shared_path}/config/puma.rb"
 # set :puma_access_log, "#{shared_path}/log/puma_access.log"
 # set :puma_error_log, "#{shared_path}/log/puma_error.log"
 # set :puma_role, :app
@@ -92,6 +94,7 @@ set :ssh_options, {
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, false
 # set :puma_preload_app, false
+set :puma_preload_app, false
 # set :puma_daemonize, false
 # set :puma_plugins, []  #accept array of plugins
 # set :puma_tag, fetch(:application)
@@ -107,6 +110,8 @@ set :ssh_options, {
 # set :nginx_ssl_certificate, "/etc/ssl/certs/#{fetch(:nginx_config_name)}.crt"
 # set :nginx_ssl_certificate_key, "/etc/ssl/private/#{fetch(:nginx_config_name)}.key"
 # set :nginx_use_ssl, false
+
+set :prune_bundler, true
 
 require 'seed-fu/capistrano3'
 before 'deploy:publishing', 'db:seed_fu'
