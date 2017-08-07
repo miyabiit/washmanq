@@ -1,0 +1,35 @@
+<% content_for(:title) do -%>
+  <%= link_to '統計情報', sales_path(year: @year, month: @month), class: 'navbar-title-link' %> ＞ <%= @place.name %>
+<% end -%>
+<% today = Date.today -%>
+<select-detail-month :place-id="<%= @place.id %>" :year="<%= @year %>" :month="<%= @month %>"></select-detail-month>
+
+<table class="ui blue celled table">
+  <thead>
+    <tr>
+      <th>種別</th>
+      <th>現金売上</th>
+      <th>プリペイド売り上げ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wash_sales_by_month.each do |sale| -%>
+    <tr>
+      <td><%= sale.equipment_num %>号機</td>
+      <td><%= sale.cash_sales_amount %></td>
+      <td><%= sale.prepaid_sales_amount %></td>
+    </tr>
+    <% end -%>
+    <% @spray_sales.each do |sale| -%>
+    <tr>
+      <td>スプレー<%= sale.equipment_num %></td>
+      <td><%= sale.cash_sales_amount %></td>
+      <td><%= sale.prepaid_sales_amount %></td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<% if @wash_sales_by_month.blank? && @spray_sales.blank? %>
+  データがありません
+<% end %>

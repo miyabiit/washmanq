@@ -17,6 +17,7 @@ import Spinner from './spinner.vue'
 import Monthpicker from './month_picker.vue'
 import SalesSummaryTable from './sales_summary_table.vue'
 import SelectSummaryMonth from './select_summary_month.vue'
+import SelectDetailMonth from './select_detail_month.vue'
 
 Vue.component("vuetable", Vuetable)
 Vue.component("file-table", FileTable)
@@ -27,6 +28,7 @@ Vue.component('spinner', Spinner)
 Vue.component('month-picker', Monthpicker)
 Vue.component('sales-summary-table', SalesSummaryTable)
 Vue.component('select-summary-month', SelectSummaryMonth)
+Vue.component('select-detail-month', SelectDetailMonth)
 
 window.vbus = new Vue()
 
