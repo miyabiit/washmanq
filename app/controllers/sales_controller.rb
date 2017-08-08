@@ -17,7 +17,7 @@ class SalesController < ApplicationController
              else
                Place.first
              end
-    @summaries = SalesCalculator.summary_with_rate_for_transition(@place, @target_date)
+    @summaries = SalesCalculator.summary_with_rate_for_transition(@place, Date.today)
   end
 
   private
