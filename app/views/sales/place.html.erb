@@ -16,15 +16,15 @@
     <% @wash_sales_by_month.each do |sale| -%>
     <tr>
       <td><%= sale.equipment_num %>号機</td>
-      <td><%= sale.cash_sales_amount %></td>
-      <td><%= sale.prepaid_sales_amount %></td>
+      <td class="number"><%= sale.cash_sales_amount&.to_s(:delimited) %></td>
+      <td class="number"><%= sale.prepaid_sales_amount&.to_s(:delimited) %></td>
     </tr>
     <% end -%>
     <% @spray_sales.each do |sale| -%>
     <tr>
       <td>スプレー<%= sale.equipment_num %></td>
-      <td><%= sale.cash_sales_amount %></td>
-      <td><%= sale.prepaid_sales_amount %></td>
+      <td class="number"><%= sale.cash_sales_amount&.to_s(:delimited) %></td>
+      <td class="number"><%= sale.prepaid_sales_amount&.to_s(:delimited) %></td>
     </tr>
     <% end -%>
   </tbody>

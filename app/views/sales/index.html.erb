@@ -32,12 +32,12 @@
     <% @summaries.each do |summary| -%>
     <tr>
       <td><%= link_to summary.place.name, places_sales_path(year: @year, month: @month, place_id: summary.place.id) %></td>
-      <td><%= summary.sales_count&.to_s(:delimited) %></td>
-      <td><%= format_percentage(summary.sales_count_prev_year_rate) %></td>
-      <td><%= format_percentage(summary.sales_count_prev_month_rate) %></td>
-      <td><%= summary.sales_amount&.to_s(:delimited) %></td>
-      <td><%= format_percentage(summary.sales_amount_prev_year_rate) %></td>
-      <td><%= format_percentage(summary.sales_amount_prev_month_rate) %></td>
+      <td class="number"><%= summary.sales_count&.to_s(:delimited) %></td>
+      <td class="number"><%= format_percentage(summary.sales_count_prev_year_rate) %></td>
+      <td class="number"><%= format_percentage(summary.sales_count_prev_month_rate) %></td>
+      <td class="number"><%= summary.sales_amount&.to_s(:delimited) %></td>
+      <td class="number"><%= format_percentage(summary.sales_amount_prev_year_rate) %></td>
+      <td class="number"><%= format_percentage(summary.sales_amount_prev_month_rate) %></td>
     </tr>
     <% end -%>
   </tbody>
