@@ -7,7 +7,7 @@
       <select-summary-month :year="<%= @year %>" :month="<%= @month %>"></select-summary-month>
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9">
-      <%= link_to '月別推移', transition_sales_path(year: @year, month: @month), class: 'mdc-button mdc-button--accent' %>
+      <%= link_to '過去一年推移', transition_sales_path(year: @year, month: @month), class: 'mdc-button mdc-button--accent' %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class SalesCalculator
   class << self
     def summary_with_rate(target_month_first_date)
-      summaries = SalesSummary.where(target_month: target_month_first_date.strftime('%Y%m')).to_a
+      summaries = SalesSummary.where(target_month: target_month_first_date.strftime('%Y%m')).order(place_id: :asc).to_a
       prev_month_summaries = SalesSummary.where(target_month: target_month_first_date.prev_month.strftime('%Y%m')).to_a
       prev_year_summaries = SalesSummary.where(target_month: target_month_first_date.prev_year.strftime('%Y%m')).to_a
 
@@ -26,7 +26,7 @@ class SalesCalculator
       month_range = prev_year_month.strftime('%Y%m') .. target_date.strftime('%Y%m')
       prev_year_month_range = prev_year_month.prev_year.strftime('%Y%m') .. target_date.prev_year.strftime('%Y%m')
 
-      summaries = SalesSummary.where(place: place, target_month: month_range).to_a
+      summaries = SalesSummary.where(place: place, target_month: month_range).order(target_month: :asc).to_a
       prev_year_summaries = SalesSummary.where(place: place, target_month: prev_year_month_range).to_a
 
       summaries_with_rate = summaries.map {|s| SummaryWithRate.new(target_month: s.target_month, place: s.place, sales_amount: s.sales_amount, sales_count: s.sales_count) }

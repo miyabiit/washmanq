@@ -2,7 +2,16 @@
   <%= link_to '統計情報', sales_path(year: @year, month: @month), class: 'navbar-title-link' %> ＞ <%= @place.name %>
 <% end -%>
 <% today = Date.today -%>
-<select-detail-month :place-id="<%= @place.id %>" :year="<%= @year %>" :month="<%= @month %>"></select-detail-month>
+<div class="mdc-layout-grid no-margin-grid">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3">
+      <select-detail-month :place-id="<%= @place.id %>" :year="<%= @year %>" :month="<%= @month %>"></select-detail-month>
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9">
+      <%= @place.name %>
+    </div>
+  </div>
+</div>
 
 <table class="ui blue celled table">
   <thead>
