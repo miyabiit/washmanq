@@ -7,7 +7,12 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+set :rails_env, "production"
+server '52.68.251.227', user: 'ec2-user', roles: %w{web app db}
 
+role :app, %w{ec2-user@52.68.251.227}
+role :web, %w{ec2-user@52.68.251.227}
+role :db, %w{ec2-user@52.68.251.227}
 
 # role-based syntax
 # ==================

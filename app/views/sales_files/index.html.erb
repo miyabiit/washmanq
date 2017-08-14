@@ -22,7 +22,7 @@
       <tr>
         <td><%= sales_file.excel_file_name %></td>
         <td><%= l(sales_file.created_at, format: :long) %></td>
-        <td><%= link_to 'ダウンロード', sales_file.excel.url %></td>
+        <td><%= link_to 'ダウンロード', download_sales_file_path(sales_file) %></td>
       </tr>
     <% end  %>
   </tbody>

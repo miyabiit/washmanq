@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
   resources :cameras, only: [:index]
 
-  resources :sales_files, only: [:index, :create]
+  resources :sales_files, only: [:index, :create] do
+    member do
+      get :download
+    end
+  end
 
   root to: redirect('cameras')
 

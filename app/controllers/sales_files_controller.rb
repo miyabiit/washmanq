@@ -29,6 +29,15 @@ class SalesFilesController < ApplicationController
     render status: :unprocessable_entity, json: {error: {messages: [ex.message]}}
   end
 
+  def download
+    @sales_file = SalesFile.find(params[:id])
+    if @sales_file.excel.respond_to?(:expiring_url)
+      redirect_to @sales_file.excel.expiring_url(1.minutes)
+    else
+      redirect_to @sales_file.excel.url
+    end
+  end
+
   private
 
   def sales_file_params
