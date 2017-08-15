@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801100616) do
+ActiveRecord::Schema.define(version: 20170822080137) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
     t.integer "special_price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mail_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "mail_info_id", null: false
+    t.string "file_file_name"
+    t.string "file_content_type"
+    t.integer "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mail_info_id"], name: "index_mail_files_on_mail_info_id"
+  end
+
+  create_table "mail_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.string "from"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "received_at"
   end
 
   create_table "place_aliases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -90,6 +110,7 @@ ActiveRecord::Schema.define(version: 20170801100616) do
     t.index ["place_id"], name: "index_wash_sales_on_place_id"
   end
 
+  add_foreign_key "mail_files", "mail_infos"
   add_foreign_key "place_aliases", "places"
   add_foreign_key "sales_summaries", "places"
   add_foreign_key "spray_sales", "places"

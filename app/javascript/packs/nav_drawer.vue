@@ -12,6 +12,9 @@
           <a :class="{'mdc-permanent-drawer--selected': isSelected('sales_files')}"  class="mdc-list-item" href="/sales_files" data-mdc-tabindex-handled="true" tabindex="-1">
             <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">file_upload</i>データインポート
           </a>
+          <a :class="{'mdc-permanent-drawer--selected': isSelected('mail_infos')}"  class="mdc-list-item" href="/mail_infos" data-mdc-tabindex-handled="true" tabindex="-1">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">mail</i>FAX受信メール
+          </a>
         </nav>
       </div>
     </nav>

@@ -14,6 +14,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :mail_infos, only: [:index]
+
+  resources :mail_files, only: [] do
+    member do
+      get :download
+    end
+  end
+
   root to: redirect('cameras')
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

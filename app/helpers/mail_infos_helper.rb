@@ -1,0 +1,2 @@
+module MailInfosHelper
+end

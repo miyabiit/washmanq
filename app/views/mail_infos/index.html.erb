@@ -1,0 +1,31 @@
+<% content_for(:title) { 'FAX受信メール' } -%>
+
+<%= paginate @mail_infos %>
+<table class="vuetable ui blue selectable celled stackable attached table">
+  <thead>
+    <tr>
+      <th>日時</th>
+      <th>メールタイトル</th>
+      <th>送信元</th>
+      <th>ファイル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mail_infos.each do |mail_info| %>
+      <tr>
+        <td><%= l(mail_info.received_at, format: :long) if mail_info.received_at %></td>
+        <td><%= mail_info.title %></td>
+        <td><%= mail_info.from %></td>
+        <td>
+          <% mail_info.mail_files.each.with_index do |mail_file, index| %>
+            <% if index > 0 %>
+              <br/>
+            <% end %>
+            <%= link_to mail_file.file_file_name, download_mail_file_path(mail_file), download: mail_file.file_file_name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end  %>
+  </tbody>
+</table>
+<%= paginate @mail_infos %>

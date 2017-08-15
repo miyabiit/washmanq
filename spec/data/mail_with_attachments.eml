@@ -1,0 +1,39 @@
+MIME-Version: 1.0
+Received: by 10.25.205.78 with HTTP; Mon, 21 Aug 2017 20:15:54 -0700 (PDT)
+Date: Tue, 22 Aug 2017 12:15:54 +0900
+Delivered-To: test@example.com
+Message-ID: <CABqfjQ_iOoXvzU6E1S4DPkj9_095qFZ3QfdVEDFWkD5t9-hkdg@mail.gmail.com>
+Subject: =?UTF-8?B?44OG44K544OI44Oh44O844Or77yI5re75LuY44OV44Kh44Kk44Or5LuY44GN77yJ?=
+From: =?UTF-8?B?5Lit5p2R44CA55yf?= <test@example.com>
+To: =?UTF-8?B?44G+44GT44Go44Gq44GL44KA44KJ?= <test@example.com>
+Content-Type: multipart/mixed; boundary="001a113f18a65d660d05574f03b4"
+
+--001a113f18a65d660d05574f03b4
+Content-Type: multipart/alternative; boundary="001a113f18a65d660005574f03b2"
+
+--001a113f18a65d660005574f03b2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+44OG44K544OI44Oh44O844Or44Gu5YaF5a65DQo=
+--001a113f18a65d660005574f03b2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+PGRpdiBkaXI9Imx0ciI+44OG44K544OI44Oh44O844Or44Gu5YaF5a65PC9kaXY+DQo=
+--001a113f18a65d660005574f03b2--
+--001a113f18a65d660d05574f03b4
+Content-Type: text/plain; charset="UTF-8"; name="test_file.txt"
+Content-Disposition: attachment; filename="test_file.txt"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_j6n0p8x80
+
+5re75LuY44OV44Kh44Kk44OrCg==
+--001a113f18a65d660d05574f03b4
+Content-Type: text/plain; charset="UTF-8"; name="test_file2.txt"
+Content-Disposition: attachment; filename="test_file2.txt"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_j6n0pv5q1
+
+5re75LuY44OV44Kh44Kk44OrMgo=
+--001a113f18a65d660d05574f03b4--

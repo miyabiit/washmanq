@@ -1,7 +1,6 @@
 class SalesFile < ApplicationRecord
   paginates_per 10
 
-  # TODO:
   has_attached_file :excel
 
   ## Validation

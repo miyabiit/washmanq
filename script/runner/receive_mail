@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/ec2-user/rails_apps/washmanq/current
+HOME=/home/ec2-user PATH="/usr/local/rbenv/shims:$PATH" bundle exec rails r -e production "FaxMailer.receive(STDIN.read)"
