@@ -44,7 +44,7 @@ class WashSalesExcelParserB
       sale.cash_sales_amount = get_value(sheet, row_idx+1, sum_base_col_idx, '現金売上')
       sale.prepaid_sales_amount = get_value(sheet, row_idx+2, sum_base_col_idx, 'プリペイド売上')
 
-      puts sale.inspect
+      #puts sale.inspect
 
       sale
     end
