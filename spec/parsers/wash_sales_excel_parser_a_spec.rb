@@ -9,6 +9,7 @@ describe WashSalesExcelParserA do
       end
       it do
         expect(@sales.count).to eq(31*2)
+        expect(@sales.map(&:target_date).all? {|date| date.month == 5}).to be_truthy
       end
     end
   end
