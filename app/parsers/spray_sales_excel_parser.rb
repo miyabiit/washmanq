@@ -13,9 +13,9 @@ class SpraySalesExcelParser
 
       place_name = sheet.cell(1, 2)
 
-      raise ExcelParseError, "場所名の形式が不正です。 ('#{place_name}') (例: NN店スプレー売上)" unless place_name && place_name =~ /店スプレー売上\Z/
+      raise ExcelParseError, "場所名の形式が不正です。 ('#{place_name}') (例: NNスプレー売上)" unless place_name && place_name =~ /スプレー売上\Z/
 
-      place_name.gsub!(/\A(.*)店スプレー売上\Z/, '\1')
+      place_name.gsub!(/\A(.*)スプレー売上\Z/, '\1')
       place = Place.find_by_alias_name(place_name)
 
       raise ExcelParseError, "未登録の場所です #{place_name}" unless place
