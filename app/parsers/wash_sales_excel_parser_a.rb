@@ -29,9 +29,10 @@ class WashSalesExcelParserA
       last_day = target_date.end_of_month.day
 
       (1..equipment_count).each do |eq_num|
+        date = target_date
         (start_row_idx .. (start_row_idx + last_day - 1)).each do |row_idx|
-          sales << parse_row(sheet, row_idx, eq_num, place, target_date)
-          target_date += 1
+          sales << parse_row(sheet, row_idx, eq_num, place, date)
+          date += 1
         end
       end
 

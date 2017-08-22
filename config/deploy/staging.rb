@@ -4,15 +4,15 @@
 # You can define all roles on a single server, or split them:
 
 set :rails_env, "staging"
-server '13.115.246.199', user: 'ec2-user', roles: %w{web app db}
+server '54.250.148.19', user: 'ec2-user', roles: %w{web app db}
 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-role :app, %w{ec2-user@13.115.246.199}
-role :web, %w{ec2-user@13.115.246.199}
-role :db, %w{ec2-user@13.115.246.199}
+role :app, %w{ec2-user@54.250.148.19}
+role :web, %w{ec2-user@54.250.148.19}
+role :db, %w{ec2-user@54.250.148.19}
 
 # role-based syntax
 # ==================

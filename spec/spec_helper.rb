@@ -50,6 +50,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    SeedFu.quiet = true
+    SeedFu.seed("#{Rails.root}/db/fixtures")
   end
 
   config.around(:each) do |example|
