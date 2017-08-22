@@ -88,6 +88,10 @@ td.number, th.number {
   text-align: right !important;
 }
 
+td.center, th.center {
+  text-align: center !important;
+}
+
 .mdc-layout-grid__cell {
   align-self: center;
 }

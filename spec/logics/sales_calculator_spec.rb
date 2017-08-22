@@ -14,7 +14,7 @@ describe SalesCalculator do
     end
 
     it do
-      summaries = SalesCalculator.summary_with_rate(Date.new(2017, 7, 1))
+      summaries, all_summary = SalesCalculator.summary_with_rate(Date.new(2017, 7, 1))
       expect(summaries.count).to eq(2)
       expect(summaries.first.place.id).to eq(@places[0].id)
       expect(summaries.first.target_month).to eq('201707')
@@ -33,6 +33,14 @@ describe SalesCalculator do
       expect(summaries.last.sales_amount).to eq(104)
       expect(summaries.last.sales_amount_prev_year_rate).to be_nil
       expect(summaries.last.sales_amount_prev_month_rate).to be_nil
+
+      expect(all_summary.target_month).to eq('201707')
+      expect(all_summary.sales_count).to eq(4 + 5)
+      expect(all_summary.sales_amount).to eq(103 + 104)
+      expect(all_summary.sales_count_prev_year_rate).to eq(9.0 / 1.0)
+      expect(all_summary.sales_count_prev_month_rate).to eq(9.0 / 3.0)
+      expect(all_summary.sales_amount_prev_year_rate).to eq(207.0 / 100.0)
+      expect(all_summary.sales_amount_prev_month_rate).to eq(207.0 / 102.0)
     end
   end
 
