@@ -2,7 +2,7 @@ class SalesController < ApplicationController
   before_action :setup_year_month
 
   def index
-    @summaries = SalesCalculator.summary_with_rate(@target_date)
+    @summaries, @all_summary = SalesCalculator.summary_with_rate(@target_date)
   end
 
   def place

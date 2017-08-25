@@ -41,6 +41,17 @@
     </tr>
     <% end -%>
   </tbody>
+  <tfoot>
+    <tr>
+      <th class="center">合計</th>
+      <th class="number"><%= @all_summary.sales_count&.to_s(:delimited) %></th>
+      <th class="number"><%= format_percentage(@all_summary.sales_count_prev_year_rate) %></th>
+      <th class="number"><%= format_percentage(@all_summary.sales_count_prev_month_rate) %></th>
+      <th class="number"><%= @all_summary.sales_amount&.to_s(:delimited) %></th>
+      <th class="number"><%= format_percentage(@all_summary.sales_amount_prev_year_rate) %></th>
+      <th class="number"><%= format_percentage(@all_summary.sales_amount_prev_month_rate) %></th>
+    </tr>
+  </tfoot>
 </table>
 
 <% if @summaries.blank? %>

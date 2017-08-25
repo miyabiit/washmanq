@@ -18,7 +18,20 @@ class SalesCalculator
         end
       end
 
-      summaries_with_rate
+      all_summary_with_rate = SummaryWithRate.new(target_month: target_month_first_date.strftime('%Y%m'),
+                                                  sales_amount: summaries_with_rate.sum(&:sales_amount),
+                                                  sales_count: summaries_with_rate.sum(&:sales_count))
+      prev_month_sales_amount =  prev_month_summaries.sum(&:sales_amount)
+      prev_month_sales_count =  prev_month_summaries.sum(&:sales_count)
+      prev_year_sales_amount =  prev_year_summaries.sum(&:sales_amount)
+      prev_year_sales_count =  prev_year_summaries.sum(&:sales_count)
+
+      all_summary_with_rate.sales_count_prev_month_rate = all_summary_with_rate.sales_count.to_f / prev_month_sales_count.to_f if prev_month_sales_count > 0
+      all_summary_with_rate.sales_amount_prev_month_rate = all_summary_with_rate.sales_amount.to_f / prev_month_sales_amount.to_f if prev_month_sales_amount > 0
+      all_summary_with_rate.sales_count_prev_year_rate = all_summary_with_rate.sales_count.to_f / prev_year_sales_count.to_f if prev_year_sales_count > 0
+      all_summary_with_rate.sales_amount_prev_year_rate = all_summary_with_rate.sales_amount.to_f / prev_year_sales_amount.to_f if prev_year_sales_amount > 0
+
+      [summaries_with_rate, all_summary_with_rate]
     end
 
     def summary_with_rate_for_transition(place, target_date)

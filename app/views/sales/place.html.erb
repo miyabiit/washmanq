@@ -37,6 +37,14 @@
     </tr>
     <% end -%>
   </tbody>
+  <% wash_and_spray_sales = (@wash_sales_by_month + @spray_sales) %>
+  <tfoot>
+    <tr>
+      <th class="center">合計</th>
+      <th class="number"><%= wash_and_spray_sales.sum(&:cash_sales_amount)&.to_s(:delimited) %></th>
+      <th class="number"><%= wash_and_spray_sales.sum(&:prepaid_sales_amount)&.to_s(:delimited) %></th>
+    </tr>
+  </tfoot>
 </table>
 
 <% if @wash_sales_by_month.blank? && @spray_sales.blank? %>
