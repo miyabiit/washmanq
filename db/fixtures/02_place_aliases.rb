@@ -56,3 +56,15 @@ PlaceAlias.seed(:id) do |s|
   s.name = "大和店スプレー売上"
 end
 id += 1
+PlaceAlias.seed(:id) do |s|
+  s.id = id
+  s.place_id = 5
+  s.name = "ウォッシュマンＱ大和桜ヶ丘"
+end
+id += 1
+PlaceAlias.seed(:id) do |s|
+  s.id = id
+  s.place_id = 5
+  s.name = "大和桜ヶ丘店"
+end
+id += 1
