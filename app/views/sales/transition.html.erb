@@ -18,11 +18,11 @@
     </tr>
     <tr>
       <th>合計</th>
-      <th>前年比（％）</th>
       <th>前月比（％）</th>
+      <th>前年比（％）</th>
       <th>合計</th>
-      <th>前年比（％）</th>
       <th>前月比（％）</th>
+      <th>前年比（％）</th>
     </tr>
   </thead>
   <tbody>
@@ -30,11 +30,11 @@
     <tr>
       <td><%= l Time.strptime(summary.target_month, '%Y%m'), format: :year_month %></td>
       <td class="number"><%= summary.sales_count&.to_s(:delimited) %></td>
-      <td class="number"><%= format_percentage(summary.sales_count_prev_year_rate) %></td>
       <td class="number"><%= format_percentage(summary.sales_count_prev_month_rate) %></td>
+      <td class="number"><%= format_percentage(summary.sales_count_prev_year_rate) %></td>
       <td class="number"><%= summary.sales_amount&.to_s(:delimited) %></td>
-      <td class="number"><%= format_percentage(summary.sales_amount_prev_year_rate) %></td>
       <td class="number"><%= format_percentage(summary.sales_amount_prev_month_rate) %></td>
+      <td class="number"><%= format_percentage(summary.sales_amount_prev_year_rate) %></td>
     </tr>
     <% end  %>
   </tbody>
