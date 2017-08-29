@@ -75,5 +75,28 @@ class SalesCalculator
 
       sales_by_month
     end
+
+    def all_summary_with_rate_for_transition(target_date)
+      month_range = target_date.prev_year.prev_month.prev_year.strftime('%Y%m') .. target_date.strftime('%Y%m')
+      display_month_range = target_date.prev_year.prev_month.strftime('%Y%m') .. target_date.strftime('%Y%m')
+      summaries = SalesSummary.where(target_month: month_range).sum_amount_and_count_by_target_month
+
+      summaries_with_rate_all = summaries.map {|s| SummaryWithRate.new(target_month: s.target_month, sales_amount: s.sales_amount_sum, sales_count: s.sales_count_sum) }
+      summaries_with_rate = summaries_with_rate_all.select {|s| display_month_range.include?(s.target_month) }
+
+      summaries_with_rate.each do |s|
+        if prev_year_summary = summaries_with_rate_all.find{|ps| Time.strptime(ps.target_month, '%Y%m').next_year.strftime('%Y%m') == s.target_month }
+          s.sales_count_prev_year_rate = s.sales_count.to_f / prev_year_summary.sales_count.to_f if prev_year_summary.sales_count > 0
+          s.sales_amount_prev_year_rate = s.sales_amount.to_f / prev_year_summary.sales_amount.to_f if prev_year_summary.sales_amount > 0
+        end
+        prev_target_month = Time.strptime(s.target_month, '%Y%m').prev_month.strftime('%Y%m')
+        if prev_month_summary = summaries_with_rate_all.find{|ss| ss.target_month == prev_target_month}
+          s.sales_count_prev_month_rate = s.sales_count.to_f / prev_month_summary.sales_count.to_f if prev_month_summary.sales_count > 0
+          s.sales_amount_prev_month_rate = s.sales_amount.to_f / prev_month_summary.sales_amount.to_f if prev_month_summary.sales_amount > 0
+        end
+      end
+
+      summaries_with_rate
+    end
   end
 end

@@ -3,8 +3,9 @@
 <% end -%>
 
 <nav class="mdc-tab-bar mdc-tab-bar--indicator-accent">
+  <%= link_to '合計', transition_sales_path(year: @year, month: @month, place_id: 0), class: ['mdc-tab', ('mdc-tab--active' unless @place)].compact.join(' ') %>
 <% Place.all.each do |place| %>
-  <%= link_to place.name, transition_sales_path(year: @year, month: @month, place_id: place.id), class: ['mdc-tab', ('mdc-tab--active' if @place.id == place.id)].compact.join(' ') %>
+  <%= link_to place.name, transition_sales_path(year: @year, month: @month, place_id: place.id), class: ['mdc-tab', ('mdc-tab--active' if @place&.id == place.id)].compact.join(' ') %>
 <% end %>
   <span class="mdc-tab-bar__indicator"></span>
 </nav>

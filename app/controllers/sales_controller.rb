@@ -12,12 +12,14 @@ class SalesController < ApplicationController
   end
 
   def transition
-    @place = if params[:place_id].present?
+    @place = if params[:place_id].present? && params[:place_id].to_i != 0
                Place.find(params[:place_id])
-             else
-               Place.first
              end
-    @summaries = SalesCalculator.summary_with_rate_for_transition(@place, Date.today)
+    @summaries = if @place
+                   SalesCalculator.summary_with_rate_for_transition(@place, Date.today)
+                 else
+                   SalesCalculator.all_summary_with_rate_for_transition(Date.today)
+                 end
   end
 
   private
