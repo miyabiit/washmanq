@@ -19,7 +19,7 @@ class FaxMailer < ApplicationMailer
     logger.debug "======================"
 
     ApplicationRecord.transaction do
-      mail_info = MailInfo.create(
+      mail_info = MailInfo.create!(
         title: email.subject,
         from: email.from.first,
         content: (email.multipart? ? (email.html_part.decoded.presence || email.text_part.decoded.presence || '') : email.body.decoded),
