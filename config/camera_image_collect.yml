@@ -1,0 +1,10 @@
+development:
+  path: '/data/cameras' 
+
+test:
+  path: 'tmp/cameras' 
+
+production: &production_config
+  path: '/home/ftp-user/data/cameras' 
+
+staging: *production_config

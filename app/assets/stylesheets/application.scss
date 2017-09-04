@@ -54,16 +54,16 @@
   font-feature-settings: 'liga';
 }
 
-.content {
+.top-content {
   display: flex;
   flex: 1 1 auto;
   height: 100%;
   box-sizing: border-box;
 }
 .main-content {
-  padding-left: 16px;
-  padding-right: 24px;
-  padding-top: 16px;
+  padding-left: 8px;
+  padding-right: 10px;
+  padding-top: 6px;
   width: 100%;
   overflow: scroll;
   padding-bottom: 100px;
@@ -94,4 +94,29 @@ td.center, th.center {
 
 .mdc-layout-grid__cell {
   align-self: center;
+}
+
+.mdc-grid-tile__footer {
+  background-color: var(--mdc-theme-primary);
+  color: var(--mdc-theme-text-primary-on-primary) !important;
+  padding: 8px;
+}
+
+.mdc-toolbar {
+  &__section {
+    &--align-end {
+      padding-right: 10px;
+    }
+    .material-icons {
+      color: white !important;
+    }
+    .date-input {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .tool-icons {
+      margin-left: 10px;
+      margin-top: 4px;
+    }
+  }
 }

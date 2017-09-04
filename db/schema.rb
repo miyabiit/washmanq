@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822080137) do
+ActiveRecord::Schema.define(version: 20170904071517) do
+
+  create_table "camera_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "camera_id", null: false
+    t.datetime "shooted_at"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camera_id"], name: "index_camera_images_on_camera_id"
+  end
+
+  create_table "cameras", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "place_id", null: false
+    t.string "name"
+    t.string "display_name"
+    t.string "mft_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_cameras_on_place_id"
+  end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "basic_price", default: 0
@@ -110,6 +132,8 @@ ActiveRecord::Schema.define(version: 20170822080137) do
     t.index ["place_id"], name: "index_wash_sales_on_place_id"
   end
 
+  add_foreign_key "camera_images", "cameras"
+  add_foreign_key "cameras", "places"
   add_foreign_key "mail_files", "mail_infos"
   add_foreign_key "place_aliases", "places"
   add_foreign_key "sales_summaries", "places"
