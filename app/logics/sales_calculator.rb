@@ -65,11 +65,13 @@ class SalesCalculator
 
       cash_sales = sales.group(:equipment_num).sum(:cash_sales_amount)
       prepaid_sales = sales.group(:equipment_num).sum(:prepaid_sales_amount)
+      sales_counts = sales.group(:equipment_num).sum(:sales_count)
       sales = cash_sales.each do |eq_num, cash_amount|
         sales_by_month << SalesByMonth.new(
           equipment_num: eq_num,
           cash_sales_amount: cash_amount,
-          prepaid_sales_amount: prepaid_sales[eq_num]
+          prepaid_sales_amount: prepaid_sales[eq_num],
+          sales_count: sales_counts[eq_num]
         )
       end
 

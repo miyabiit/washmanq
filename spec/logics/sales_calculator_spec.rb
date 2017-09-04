@@ -106,17 +106,21 @@ describe SalesCalculator do
 
       expect(wash_sales_summaries.count).to eq(2)
       expect(wash_sales_summaries.first.equipment_num).to eq(1)
+      expect(wash_sales_summaries.first.sales_count).to eq(3 + 4)
       expect(wash_sales_summaries.first.cash_sales_amount).to eq(1000 + 1001)
       expect(wash_sales_summaries.first.prepaid_sales_amount).to eq(2000 + 2001)
       expect(wash_sales_summaries.last.equipment_num).to eq(2)
+      expect(wash_sales_summaries.last.sales_count).to eq(5)
       expect(wash_sales_summaries.last.cash_sales_amount).to eq(1003)
       expect(wash_sales_summaries.last.prepaid_sales_amount).to eq(2003)
 
       expect(spray_sales_summaries.count).to eq(2)
       expect(spray_sales_summaries.first.equipment_num).to eq(1)
+      expect(spray_sales_summaries.first.sales_count).to eq(1)
       expect(spray_sales_summaries.first.cash_sales_amount).to eq(100)
       expect(spray_sales_summaries.first.prepaid_sales_amount).to eq(200)
       expect(spray_sales_summaries.last.equipment_num).to eq(2)
+      expect(spray_sales_summaries.last.sales_count).to eq(2)
       expect(spray_sales_summaries.last.cash_sales_amount).to eq(101)
       expect(spray_sales_summaries.last.prepaid_sales_amount).to eq(201)
     end
