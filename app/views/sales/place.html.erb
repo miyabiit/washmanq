@@ -50,10 +50,10 @@
   <tfoot>
     <tr>
       <th class="center">合計</th>
-      <th class="number"><%= wash_and_spray_sales.map(&:sales_count).compact.sum&.to_s(:delimited) %></th>
-      <th class="number"><%= wash_and_spray_sales.sum(&:cash_sales_amount)&.to_s(:delimited) %></th>
-      <th class="number"><%= wash_and_spray_sales.sum(&:prepaid_sales_amount)&.to_s(:delimited) %></th>
-      <th class="number"><%= [wash_and_spray_sales.sum(&:cash_sales_amount), wash_and_spray_sales.sum(&:prepaid_sales_amount)].compact.sum.to_s(:delimited) %></th>
+      <th class="number"><%= wash_and_spray_sales.map(&:sales_count).compact.sum.to_s(:delimited) %></th>
+      <th class="number"><%= wash_and_spray_sales.map(&:cash_sales_amount).compact.sum.to_s(:delimited) %></th>
+      <th class="number"><%= wash_and_spray_sales.map(&:prepaid_sales_amount).compact.sum.to_s(:delimited) %></th>
+      <th class="number"><%= [wash_and_spray_sales.map(&:cash_sales_amount).compact.sum, wash_and_spray_sales.map(&:prepaid_sales_amount).compact.sum].sum.to_s(:delimited) %></th>
     </tr>
   </tfoot>
 </table>
