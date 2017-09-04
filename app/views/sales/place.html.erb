@@ -13,27 +13,36 @@
   </div>
 </div>
 
-<table class="ui blue celled table">
+<table class="ui blue celled structured table">
   <thead>
     <tr>
-      <th>種別</th>
-      <th>現金売上</th>
-      <th>プリペイド売り上げ</th>
+      <th rowspan="2">種別</th>
+      <th rowspan="2">売上台数</th>
+      <th colspan="3">売上金額</th>
+    </tr>
+    <tr>
+      <th>現金</th>
+      <th>プリペイド</th>
+      <th>合計</th>
     </tr>
   </thead>
   <tbody>
     <% @wash_sales_by_month.each do |sale| -%>
     <tr>
       <td><%= sale.equipment_num %>号機</td>
+      <td class="number"><%= sale.sales_count&.to_s(:delimited) %></td>
       <td class="number"><%= sale.cash_sales_amount&.to_s(:delimited) %></td>
       <td class="number"><%= sale.prepaid_sales_amount&.to_s(:delimited) %></td>
+      <td class="number"><%= [sale.cash_sales_amount, sale.prepaid_sales_amount].compact.sum.to_s(:delimited) %></td>
     </tr>
     <% end -%>
     <% @spray_sales.each do |sale| -%>
     <tr>
       <td>スプレー<%= sale.equipment_num %></td>
+      <td class="number"><%= sale.sales_count&.to_s(:delimited) %></td>
       <td class="number"><%= sale.cash_sales_amount&.to_s(:delimited) %></td>
       <td class="number"><%= sale.prepaid_sales_amount&.to_s(:delimited) %></td>
+      <td class="number"><%= [sale.cash_sales_amount, sale.prepaid_sales_amount].compact.sum.to_s(:delimited) %></td>
     </tr>
     <% end -%>
   </tbody>
@@ -41,8 +50,10 @@
   <tfoot>
     <tr>
       <th class="center">合計</th>
+      <th class="number"><%= wash_and_spray_sales.sum(&:sales_count)&.to_s(:delimited) %></th>
       <th class="number"><%= wash_and_spray_sales.sum(&:cash_sales_amount)&.to_s(:delimited) %></th>
       <th class="number"><%= wash_and_spray_sales.sum(&:prepaid_sales_amount)&.to_s(:delimited) %></th>
+      <th class="number"><%= [wash_and_spray_sales.sum(&:cash_sales_amount), wash_and_spray_sales.sum(&:prepaid_sales_amount)].compact.sum.to_s(:delimited) %></th>
     </tr>
   </tfoot>
 </table>
