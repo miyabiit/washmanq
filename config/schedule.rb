@@ -17,6 +17,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+set :output, 'log/crontab.log'
+
 every 1.minutes do
   runner "CameraImageCollectRunner.run"
 end
