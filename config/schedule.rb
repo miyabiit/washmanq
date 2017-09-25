@@ -17,9 +17,8 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-# TODO:
-#every 1.minutes do
-#  runner "CameraImageCollectRunner.run"
-#end
+every 1.minutes do
+  runner "CameraImageCollectRunner.run"
+end
 
 # Learn more: http://github.com/javan/whenever
