@@ -2,7 +2,7 @@
   <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="20">
     <div class="mdc-grid-list mdc-grid-list--tile-aspect-4x3">
       <ul class="mdc-grid-list__tiles">
-        <a href="#" @click="showModal(image)" v-for="image in images">
+        <a href="javascript:void(0)" @click.prevent="showModal(image)" v-for="image in images">
           <camera-view :realtime="false" :camera="{imageUrl: image.url, shootedAt: image.shootedAt}"></camera-view>
         </a>
       </ul>
