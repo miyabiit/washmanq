@@ -18,6 +18,21 @@
  */
 
 @font-face {
+  font-family: 'Icons';
+  src: url(font-path("icons.eot"));
+  src: url(font-path("icons.eot?#iefix")) format('embedded-opentype'),
+       url(font-path("icons.woff2")) format('woff2'),
+       url(font-path("icons.woff")) format('woff'),
+       url(font-path("icons.ttf")) format('truetype'),
+       url(font-path("icons.svg#icons")) format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
+@font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
