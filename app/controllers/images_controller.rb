@@ -1,11 +1,11 @@
 class ImagesController < ApplicationController
   def index
     @camera = Camera.find(params[:camera_id])
-    from = (Time.strptime(params[:from], '%Y-%m-%d %H:%M') if params[:from].present?) rescue nil
-    to = (Time.strptime(params[:to], '%Y-%m-%d %H:%M') if params[:to].present?) rescue nil
+    from = (Time.zone.strptime(params[:from], '%Y-%m-%d %H:%M') if params[:from].present?) rescue nil
+    to = (Time.zone.strptime(params[:to], '%Y-%m-%d %H:%M') if params[:to].present?) rescue nil
 
     from ||= Time.new(1999, 1, 1)
-    to ||= Time.now
+    to ||= Time.zone.now
 
     limit = 20
     @images = @camera.camera_images.where(shooted_at: from .. to).order(shooted_at: :asc).limit(limit)

@@ -42,6 +42,9 @@ export default {
       return moment(date).format('YYYY/MM/DD HH:mm')
     }
   },
+  mounted() {
+    this.resetItems()
+  },
   watch: {
     shootedAtFrom() {
       this.resetItems()
