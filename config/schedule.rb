@@ -17,6 +17,7 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
+env :DISABLE_SPRING, "1"
 set :output, 'log/crontab.log'
 
 every 1.minutes do
