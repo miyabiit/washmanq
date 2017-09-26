@@ -4,8 +4,16 @@ default: &default
   channel_prefix: washmanq
 
 development: *default
-staging: *default
-production: *default
+
+staging: 
+  adapter: redis
+  url: redis://washmanq-dev.asj8hz.0001.apne1.cache.amazonaws.com:6379
+  channel_prefix: washmanq
+
+production:
+  adapter: redis
+  url: redis://washmanq-svr.asj8hz.0001.apne1.cache.amazonaws.com:6379
+  channel_prefix: washmanq
 
 test:
   adapter: async
