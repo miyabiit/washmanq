@@ -10,6 +10,6 @@ class CameraChannel < ApplicationCable::Channel
   end
 
   def self.broadcast_to_camera(camera)
-    self.broadcast_to camera, {imageUrl: camera.last_image&.image&.url, shootedAt: camera.last_image&.shooted_at&.strftime('%Y/%m/%d %H:%M:%S')}
+    self.broadcast_to camera, {imageUrl: camera.last_image&.image&.url, shootedAt: camera.last_image&.shooted_at&.strftime('%Y-%m-%d %H:%M:%S')}
   end
 end
