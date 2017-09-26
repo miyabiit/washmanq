@@ -39,9 +39,6 @@ export default {
     if (this.realtime) {
       this.cameraStream = App.cable.subscriptions.create({channel: "CameraChannel", id: this.camera.id}, {
         received(data) {
-          console.log('receive data ====')
-          console.log(data)
-          console.log('====')
           _this.imageUrl = data.imageUrl
           _this.shootedAt = data.shootedAt
         }

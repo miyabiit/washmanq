@@ -39,7 +39,6 @@ export default {
   },
   watch: {
     'syncDate.time': function(val) {
-      console.log('syncDate new value = ' + val)
       this.$emit('change-date', val)
     }
   }

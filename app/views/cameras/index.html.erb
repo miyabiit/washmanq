@@ -5,7 +5,7 @@
     <ul class="mdc-grid-list__tiles">
       <% @cameras.each do |camera| %>
         <%= link_to camera_path(camera) do %>
-          <camera-view :camera="{id: '<%= camera.id %>', displayName: '<%= camera.display_name %>', imageUrl: '<%= camera.last_image&.image&.url %>', shootedAt: '<%= camera.last_image&.shooted_at&.strftime('%Y/%m/%d %H:%M:%S') %>'}"></camera-view>
+          <camera-view :camera="{id: '<%= camera.id %>', displayName: '<%= camera.display_name %>', imageUrl: '<%= camera.last_image&.image&.url %>', shootedAt: '<%= camera.last_image&.shooted_at&.strftime('%Y-%m-%d %H:%M:%S') %>'}"></camera-view>
         <% end %>
       <% end %>
     </ul>
