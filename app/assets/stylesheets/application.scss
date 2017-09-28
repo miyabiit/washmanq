@@ -18,6 +18,21 @@
  */
 
 @font-face {
+  font-family: 'Icons';
+  src: url(font-path("icons.eot"));
+  src: url(font-path("icons.eot?#iefix")) format('embedded-opentype'),
+       url(font-path("icons.woff2")) format('woff2'),
+       url(font-path("icons.woff")) format('woff'),
+       url(font-path("icons.ttf")) format('truetype'),
+       url(font-path("icons.svg#icons")) format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
+@font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
@@ -54,16 +69,16 @@
   font-feature-settings: 'liga';
 }
 
-.content {
+.top-content {
   display: flex;
   flex: 1 1 auto;
   height: 100%;
   box-sizing: border-box;
 }
 .main-content {
-  padding-left: 16px;
-  padding-right: 24px;
-  padding-top: 16px;
+  padding-left: 8px;
+  padding-right: 10px;
+  padding-top: 6px;
   width: 100%;
   overflow: scroll;
   padding-bottom: 100px;
@@ -94,4 +109,29 @@ td.center, th.center {
 
 .mdc-layout-grid__cell {
   align-self: center;
+}
+
+.mdc-grid-tile__footer {
+  background-color: var(--mdc-theme-primary);
+  color: var(--mdc-theme-text-primary-on-primary) !important;
+  padding: 8px;
+}
+
+.mdc-toolbar {
+  &__section {
+    &--align-end {
+      padding-right: 10px;
+    }
+    .material-icons {
+      color: white !important;
+    }
+    .date-input {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .tool-icons {
+      margin-left: 10px;
+      margin-top: 4px;
+    }
+  }
 }

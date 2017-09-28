@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       get ':year/:month/places/:place_id' => 'sales#place', as: :places
     end
   end
-  resources :cameras, only: [:index]
+  resources :cameras, only: [:index, :show] do
+    resources :images, only: [:index]
+  end
 
   resources :sales_files, only: [:index, :create] do
     member do

@@ -13,5 +13,8 @@
 //= require jquery
 //= require rails-ujs
 //= require material-components-web/dist/material-components-web
+//= require semantic-ui-css/semantic
+//= require vue-infinite-scroll/vue-infinite-scroll
+//= require moment/min/moment.min
 //= require csrf_token
 //= require_tree .

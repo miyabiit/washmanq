@@ -1,3 +1,13 @@
 <% content_for(:title) { '監視カメラ' } -%>
-<h1>Cameras#index</h1>
-<p>Find me in app/views/cameras/index.html.erb</p>
+
+<div class="camera-grid">
+  <div class="mdc-grid-list mdc-grid-list--tile-aspect-4x3">
+    <ul class="mdc-grid-list__tiles">
+      <% @cameras.each do |camera| %>
+        <%= link_to camera_path(camera) do %>
+          <camera-view :camera="{id: '<%= camera.id %>', displayName: '<%= camera.display_name %>', imageUrl: '<%= camera.last_image&.image&.url %>', shootedAt: '<%= camera.last_image&.shooted_at&.strftime('%Y-%m-%d %H:%M:%S') %>'}"></camera-view>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

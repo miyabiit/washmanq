@@ -19,5 +19,7 @@ module Washmanq
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    config.camera_image_collect = config_for(:camera_image_collect)
   end
 end

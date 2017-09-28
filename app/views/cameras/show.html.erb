@@ -1,0 +1,19 @@
+<% content_for(:title) do -%>
+  <%= link_to '監視カメラ', cameras_path, class: 'navbar-title-link' %> ＞ <%= @camera.display_name %>
+<% end -%>
+<% content_for(:tools) do -%>
+  <div class="date-input">
+    <wmq-date-picker :date.sync="shootedAtFrom" @change-date="function(v) {shootedAtFrom = v}"></wmq-date-picker>
+    &nbsp;〜&nbsp;
+    <wmq-date-picker :date="shootedAtTo" @change-date="function(v) {shootedAtTo = v}"></wmq-date-picker>
+  </div>
+<%#  <div class="tool-icons">%>
+<%#    <a href="#" id="image_download" class="material-icons align-icons" aria-label="Download" alt="Download">file_download</a>%>
+<%#  </div>%>
+<% end -%>
+
+
+<div class="camera-grid-small">
+  <camera-history :shooted-at-from="shootedAtFrom" :shooted-at-to="shootedAtTo" :camera='<%= {id: @camera.id, name: @camera.name, displayName: @camera.display_name}.to_json %>'></camera-history>
+</div>
+

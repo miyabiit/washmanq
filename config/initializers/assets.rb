@@ -8,6 +8,7 @@ Rails.application.config.assets.version = '1.0'
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.paths << Rails.root.join('node_modules/material-design-icons/iconfont')
+Rails.application.config.assets.paths << Rails.root.join('node_modules/semantic-ui-css/themes/default/assets/fonts')
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|woff2)\z/
 
 # Precompile additional assets.
