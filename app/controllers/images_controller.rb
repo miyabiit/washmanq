@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     to ||= Time.zone.now
 
     limit = 20
-    @images = @camera.camera_images.where(shooted_at: from .. to).order(shooted_at: :asc).limit(limit)
+    @images = @camera.camera_images.where(shooted_at: from .. to).order(shooted_at: :desc).limit(limit)
     if params[:page].present?
       @images = @images.offset(limit * params[:page].to_i)
     end
