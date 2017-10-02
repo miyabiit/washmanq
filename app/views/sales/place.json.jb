@@ -1,0 +1,20 @@
+{
+  wash_sales: @wash_sales.map{|sale|
+    {
+      id: sale.id,
+      equipment_num: sale.equipment_num,
+      sales_count: sale.sales_count,
+      cash_sales_amount: sale.cash_sales_amount,
+      prepaid_sales_amount: sale.prepaid_sales_amount
+    }
+  },
+  spray_sales: @spray_sales.map{|sale|
+    {
+      id: sale.id,
+      equipment_num: sale.equipment_num,
+      sales_count: sale.sales_count,
+      cash_sales_amount: sale.cash_sales_amount,
+      prepaid_sales_amount: sale.prepaid_sales_amount
+    }
+  }
+}

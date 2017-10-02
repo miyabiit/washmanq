@@ -1,0 +1,9 @@
+<% content_for(:title) do -%>
+  <% if request.path =~ /\A\/sales/ -%>
+    <%= link_to '統計情報', sales_path(year: @year, month: @month), class: 'navbar-title-link' %> ＞ <%= link_to @place.name, places_sales_path(year: @year, month: @month, place_id: @place.id) %> ＞ 売上情報入力
+  <% else -%>
+    売上情報入力
+  <% end -%>
+<% end -%>
+
+<input-sales :places='<%= raw Place.all.to_json(only: [:id, :name]) %>' :place="{id: <%= @place.id %>, name: '<%= @place.name %>'}" :year="<%= @year %>" :month="<%= @month %>" :root-path="'<%= request.path =~ /\A\/sales/ ? '/sales' : '/input_sales' %>'"></input-sales>

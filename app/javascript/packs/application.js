@@ -27,6 +27,7 @@ import VueDatepicker from 'vue-datepicker'
 import WmqDatePicker from './wmq_date_picker'
 import moment from 'moment'
 import infiniteScroll from 'vue-infinite-scroll'
+import InputSales from './input_sales.vue'
 
 Vue.use(AsyncComputed)
 Vue.use(infiniteScroll)
@@ -46,6 +47,7 @@ Vue.component('camera-history', CameraHistory)
 Vue.component('datepicker', Datepicker)
 Vue.component('date-picker', VueDatepicker)
 Vue.component('wmq-date-picker', WmqDatePicker)
+Vue.component('input-sales', InputSales)
 
 window.vbus = new Vue()
 window.$vue_data = {}

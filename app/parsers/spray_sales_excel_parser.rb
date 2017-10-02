@@ -41,7 +41,7 @@ class SpraySalesExcelParser
     end
 
     def parse_month(sheet, place, row_idx, col_idx, eq_num, target_date)
-      sale = SpraySale.new  
+      sale = SprayMonthlySale.new  
       sale.place = place
       sale.target_month = target_date.strftime('%Y%m')
       sale.equipment_num = eq_num

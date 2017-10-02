@@ -14,7 +14,7 @@ class SalesFilesController < ApplicationController
       end
       if objs.present?
         first_obj = objs.first
-        if first_obj.is_a?(SpraySale)
+        if first_obj.is_a?(SprayMonthlySale)
           target_months = objs.map(&:target_month)
           target_months.each do |target_month|
             SalesSummaryCreator.create_or_update(first_obj.place, target_month)

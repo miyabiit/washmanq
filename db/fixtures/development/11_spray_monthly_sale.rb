@@ -13,7 +13,7 @@ Place.all.each do |place|
     ].each do |month|
       sales_count = rand(0..15)
       cash_amount_rate = rand(0..100)
-      SpraySale.seed do |s|
+      SprayMonthlySale.seed do |s|
         s.id = id
         s.place = place
         s.target_month = month

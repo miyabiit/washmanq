@@ -4,8 +4,18 @@ Rails.application.routes.draw do
       get ':year/:month' => 'sales#index'
       get ':year/:month/transition/(:place_id)' => 'sales#transition', as: :transition
       get ':year/:month/places/:place_id' => 'sales#place', as: :places
+      get ':year/:month/places/:place_id/edit' => 'sales#edit', as: :edit_place
+      put ':year/:month/places/:place_id' => 'sales#update', as: :place
     end
   end
+
+  resources :input_sales, only: [:index] do
+    collection do
+      get ':year/:month/places/:place_id/edit' => 'sales#edit', as: :edit_place
+      put ':year/:month/places/:place_id' => 'sales#update', as: :place
+    end
+  end
+
   resources :cameras, only: [:index, :show] do
     resources :images, only: [:index]
   end

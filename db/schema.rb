@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904071517) do
+ActiveRecord::Schema.define(version: 20171002010400) do
 
   create_table "camera_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "camera_id", null: false
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 20170904071517) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "received_at"
+  end
+
+  create_table "monthly_sales", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "place_id", null: false
+    t.string "type", null: false
+    t.string "target_month", null: false
+    t.integer "equipment_num", null: false
+    t.integer "cash_sales_amount", default: 0
+    t.integer "prepaid_sales_amount", default: 0
+    t.integer "sales_count", default: 0
+    t.string "operated_by", default: "system"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_monthly_sales_on_place_id"
   end
 
   create_table "place_aliases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -135,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170904071517) do
   add_foreign_key "camera_images", "cameras"
   add_foreign_key "cameras", "places"
   add_foreign_key "mail_files", "mail_infos"
+  add_foreign_key "monthly_sales", "places"
   add_foreign_key "place_aliases", "places"
   add_foreign_key "sales_summaries", "places"
   add_foreign_key "spray_sales", "places"

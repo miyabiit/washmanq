@@ -90,8 +90,8 @@ describe SalesCalculator do
       @target_month = '201707'
       @no_target_month = '201706'
       @spray_sales = [
-        SpraySale.create!(place: @place, target_month: @target_month, equipment_num: 1, sales_count: 1, cash_sales_amount: 100, prepaid_sales_amount: 200),
-        SpraySale.create!(place: @place, target_month: @target_month, equipment_num: 2, sales_count: 2, cash_sales_amount: 101, prepaid_sales_amount: 201)
+        SprayMonthlySale.create!(place: @place, target_month: @target_month, equipment_num: 1, sales_count: 1, cash_sales_amount: 100, prepaid_sales_amount: 200),
+        SprayMonthlySale.create!(place: @place, target_month: @target_month, equipment_num: 2, sales_count: 2, cash_sales_amount: 101, prepaid_sales_amount: 201)
       ]
       @wash_sales = [
         WashSale.create!(place: @place, target_date: Date.new(2017, 7, 1), equipment_num: 1, sales_count: 3, cash_sales_amount: 1000, prepaid_sales_amount: 2000),
@@ -102,7 +102,7 @@ describe SalesCalculator do
 
     it do
       wash_sales_summaries = SalesCalculator.summary_by_equipment(WashSale.all)
-      spray_sales_summaries = SalesCalculator.summary_by_equipment(SpraySale.all)
+      spray_sales_summaries = SalesCalculator.summary_by_equipment(SprayMonthlySale.all)
 
       expect(wash_sales_summaries.count).to eq(2)
       expect(wash_sales_summaries.first.equipment_num).to eq(1)
