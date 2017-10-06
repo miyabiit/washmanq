@@ -101,6 +101,9 @@
 
 td.number, th.number {
   text-align: right !important;
+  input[type='text'] {
+    text-align: right !important;
+  }
 }
 
 td.center, th.center {
@@ -134,4 +137,8 @@ td.center, th.center {
       margin-top: 4px;
     }
   }
+}
+
+.pull-right {
+  float: right;
 }

@@ -1,0 +1,7 @@
+@images.map {|image|
+  {
+    id: image.id,
+    url: image.image.url,
+    shootedAt: image.shooted_at
+  }
+}

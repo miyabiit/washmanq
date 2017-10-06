@@ -59,7 +59,7 @@ class SalesCalculator
       summaries_with_rate
     end
 
-    # params: sales ( WashSale | SpraySale )
+    # params: sales ( WashSale )
     def summary_by_equipment(sales)
       sales_by_month = []
 

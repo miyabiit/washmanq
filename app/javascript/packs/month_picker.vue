@@ -63,7 +63,7 @@ export default {
       const select = new MDCSelect(this, undefined, menuFactory)
       select.selectedIndex = _this.monthItems.indexOf(_this.month)
       // no resize! (resized in MDCSelect...)
-      $(this).css('width', '40px')
+      $(this).css('width', '45px')
     })
   },
   methods: {

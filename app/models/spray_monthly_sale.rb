@@ -1,0 +1,2 @@
+class SprayMonthlySale < MonthlySale
+end

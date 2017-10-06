@@ -7,8 +7,11 @@
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3">
       <select-detail-month :place-id="<%= @place.id %>" :year="<%= @year %>" :month="<%= @month %>"></select-detail-month>
     </div>
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3">
       <%= @place.name %>
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+      <%= link_to '変更', edit_place_sales_path(year: @year, month: @month, place_id: @place.id), class: "pull-right mdc-button mdc-button--raised mdc-button--primary" %>
     </div>
   </div>
 </div>
@@ -27,7 +30,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @wash_sales_by_month.each do |sale| -%>
+    <% @wash_sales.each do |sale| -%>
     <tr>
       <td><%= sale.equipment_num %>号機</td>
       <td class="number"><%= sale.sales_count&.to_s(:delimited) %></td>
@@ -46,7 +49,7 @@
     </tr>
     <% end -%>
   </tbody>
-  <% wash_and_spray_sales = (@wash_sales_by_month + @spray_sales) %>
+  <% wash_and_spray_sales = (@wash_sales + @spray_sales) %>
   <tfoot>
     <tr>
       <th class="center">合計</th>
@@ -58,6 +61,6 @@
   </tfoot>
 </table>
 
-<% if @wash_sales_by_month.blank? && @spray_sales.blank? %>
+<% if @wash_sales.blank? && @spray_sales.blank? %>
   データがありません
 <% end %>

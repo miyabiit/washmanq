@@ -9,6 +9,9 @@
           <a :class="{'mdc-permanent-drawer--selected': isSelected('sales')}" class="mdc-list-item" href="/sales" data-mdc-tabindex-handled="true" tabindex="-1">
             <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">trending_up</i>統計情報
           </a>
+          <a :class="{'mdc-permanent-drawer--selected': isSelected('input_sales')}"  class="mdc-list-item" href="/input_sales" data-mdc-tabindex-handled="true" tabindex="-1">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">mode_edit</i>売上情報入力
+          </a>
           <a :class="{'mdc-permanent-drawer--selected': isSelected('sales_files')}"  class="mdc-list-item" href="/sales_files" data-mdc-tabindex-handled="true" tabindex="-1">
             <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">file_upload</i>データインポート
           </a>
@@ -33,7 +36,10 @@ export default {
   },
   methods: {
     isSelected(pathname) {
-      return window.location.pathname == `/${pathname}`
+      if (window.location.pathname == `/${pathname}`) {
+        return true
+      }
+      return window.location.pathname.slice(0, pathname.length + 2) == `/${pathname}/`
     },
     toggle() {
       if (!this.drawer) {
