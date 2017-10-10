@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
 
   resources :cameras, only: [:index, :show] do
-    resources :images, only: [:index]
+    resources :images, only: [:index] do
+      collection do
+        get :download
+      end
+    end
   end
 
   resources :sales_files, only: [:index, :create] do
