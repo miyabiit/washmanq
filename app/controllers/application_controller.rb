@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  add_flash_types :from, :to
 
   unless Rails.env.development? || Rails.env.test?
     before_action :basic_auth

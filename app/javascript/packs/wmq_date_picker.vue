@@ -40,6 +40,9 @@ export default {
   watch: {
     'syncDate.time': function(val) {
       this.$emit('change-date', val)
+    },
+    'date': function(val) {
+      this.syncDate.time = val
     }
   }
 }

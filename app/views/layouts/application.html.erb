@@ -10,7 +10,6 @@
     <%= javascript_include_tag 'application' %>
 
     <%= javascript_pack_tag 'application' %>
-  </head>
     <%= yield :head %>
   </head>
 
@@ -26,5 +25,10 @@
         </main>
       </div>
     </div>
+    <script>
+      $(document).on('ready page:load', function(){
+        <%= yield :script %>
+      })
+    </script>
   </body>
 </html>

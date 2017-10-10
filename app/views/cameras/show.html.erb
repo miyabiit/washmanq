@@ -3,17 +3,29 @@
 <% end -%>
 <% content_for(:tools) do -%>
   <div class="date-input">
-    <wmq-date-picker :date.sync="shootedAtFrom" @change-date="function(v) {shootedAtFrom = v}"></wmq-date-picker>
+    <wmq-date-picker :date="shootedAtFrom" @change-date="function(v) {shootedAtFrom = v}"></wmq-date-picker>
     &nbsp;〜&nbsp;
     <wmq-date-picker :date="shootedAtTo" @change-date="function(v) {shootedAtTo = v}"></wmq-date-picker>
   </div>
-<%#  <div class="tool-icons">%>
-<%#    <a href="#" id="image_download" class="material-icons align-icons" aria-label="Download" alt="Download">file_download</a>%>
-<%#  </div>%>
+  <div class="tool-icons">
+    <a :href="'/cameras/<%= @camera.id %>/images/download?from='+encodeURIComponent(shootedAtFrom)+'&to='+encodeURIComponent(shootedAtTo)" class="material-icons align-icons">file_download</a>
+  </div>
 <% end -%>
 
 
 <div class="camera-grid-small">
   <camera-history :shooted-at-from="shootedAtFrom" :shooted-at-to="shootedAtTo" :camera='<%= {id: @camera.id, name: @camera.name, displayName: @camera.display_name}.to_json %>'></camera-history>
 </div>
+
+<% content_for(:script) do -%>
+  setTimeout(function(){
+  <% if @from.present? && @to.present? -%>
+    Vue.set($vue_data, 'shootedAtFrom', '<%= @from.strftime('%Y-%m-%d %H:%M') %>')
+    Vue.set($vue_data, 'shootedAtTo', '<%= @to.strftime('%Y-%m-%d %H:%M') %>')
+  <% end -%>
+  <% if flash[:alert] -%>
+    vbus.$emit('show-message-bar', '<%= flash[:alert] %>')
+  <% end -%>
+  })
+<% end -%>
 

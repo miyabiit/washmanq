@@ -51,6 +51,7 @@ Vue.component('input-sales', InputSales)
 
 window.vbus = new Vue()
 window.$vue_data = {}
+window.Vue = Vue
 
 // TODO: refactoring
 Vue.set($vue_data, 'cameras', [])

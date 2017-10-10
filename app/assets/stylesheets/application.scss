@@ -133,7 +133,8 @@ td.center, th.center {
       margin-right: 10px;
     }
     .tool-icons {
-      margin-left: 10px;
+      margin-left: 4px;
+      margin-right: 4px;
       margin-top: 4px;
     }
   }
@@ -141,4 +142,8 @@ td.center, th.center {
 
 .pull-right {
   float: right;
+}
+
+.mdc-snackbar {
+  z-index: 9999;
 }
