@@ -30,13 +30,24 @@ class ImagesController < ApplicationController
     end
 
     files = @images.lazy.map{|image| [
-      image.image.url =~ /\Ahttp/ ? open(image.image.url) : open("http://#{request.host_with_port}#{image.image.url}"),
+      open(convert_fullpath_url(image.image.url)),
       "#{@camera.name}/#{image.image.original_filename}"
     ]}
     zipline(files, "#{@camera.name}-#{@from&.strftime('%Y%m%d%H%M')}-#{@to&.strftime('%Y%m%d%H%M')}.zip")
   end
 
   private
+
+  def convert_fullpath_url(url)
+    case url
+    when /\Ahttp/
+      url
+    when /\A\/\//
+      request.protocol + url.gsub(/\A\/+/, '')
+    else
+      request.protocol + request.host_with_port + '/' + url.gsub(/\A\/+/, '')
+    end
+  end
 
   def setup_params
     @camera = Camera.find(params[:camera_id])
