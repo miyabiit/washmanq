@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     before_action :basic_auth
     def basic_auth
       authenticate_or_request_with_http_basic do |user, pass|
-        (user == ENV["BASIC_AUTH_USER"] && pass == ENV["BASIC_AUTH_PASSWORD"]) || (user == ENV["BASIC_AUTH_USER1"] && pass == ENV["BASIC_AUTH_PASSWORD1"])
+        (user == ENV["BASIC_AUTH_USER"] && pass == ENV["BASIC_AUTH_PASSWORD"]) || (user == ENV["BASIC_AUTH_USER1"] && pass == ENV["BASIC_AUTH_PASSWORD1"]) || (user == ENV["BASIC_AUTH_USER2"] && pass == ENV["BASIC_AUTH_PASSWORD2"])
       end
     end
   end
