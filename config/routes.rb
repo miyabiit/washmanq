@@ -40,5 +40,10 @@ Rails.application.routes.draw do
 
   root to: redirect('cameras')
 
+  get '*path' => 'errors#render_404'
+  put '*path' => 'errors#render_404'
+  post '*path' => 'errors#render_404'
+  patch '*path' => 'errors#render_404'
+  delete '*path' => 'errors#render_404'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

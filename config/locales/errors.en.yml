@@ -1,0 +1,9 @@
+en:
+  errors:
+    messages:
+      error_occured: 'Error occured'
+      request_busy: 'Server is busy.'
+      unauthorized: 'Not authorized for target service.'
+      input_error: 'Input Error'
+      not_found: 'Requested resource is not found'
+      forbidden: 'Forbidden Operation'
