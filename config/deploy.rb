@@ -35,6 +35,10 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 append :linked_files, "config/puma.rb"
 set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules}
 
+set :nginx_use_ssl, true
+set :nginx_ssl_certificate, '/etc/letsencrypt/live/portal.wmq.jp/fullchain.pem'
+set :nginx_ssl_certificate_key, '/etc/letsencrypt/live/portal.wmq.jp/privkey.pem'
+
 set :ssh_options, {
   user: 'ec2-user',
   forward_agent: true
