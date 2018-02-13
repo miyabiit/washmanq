@@ -33,7 +33,7 @@ set :default_environment, {
 set :bundle_binstubs, nil
 set :linked_files, fetch(:linked_files, []).push('.env')
 append :linked_files, "config/puma.rb"
-set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules}
+set :linked_dirs, %w{log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules public/.well-known}
 
 set :nginx_use_ssl, true
 set :nginx_ssl_certificate, '/etc/letsencrypt/live/portal.wmq.jp/fullchain.pem'
