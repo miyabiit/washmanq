@@ -110,6 +110,9 @@ set :puma_preload_app, false
 # set :nginx_ssl_certificate_key, "/etc/ssl/private/#{fetch(:nginx_config_name)}.key"
 # set :nginx_use_ssl, false
 
+set :puma_monit_service_name, "puma_#{fetch(:application)}_#{fetch(:stage)}"
+set :puma_monit_conf_dir, "/etc/monit.d/#{fetch(:puma_monit_service_name)}.conf"
+
 set :prune_bundler, true
 
 require 'seed-fu/capistrano3'
