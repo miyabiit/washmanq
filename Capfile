@@ -45,6 +45,7 @@ require 'capistrano/npm'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Nginx
+install_plugin Capistrano::Puma::Monit
 
 require "whenever/capistrano"
 
