@@ -16,7 +16,7 @@ class CameraImageCollectRunner
               CameraChannel.broadcast_to_camera camera
             end
           rescue ActiveRecord::RecordInvalid => ex
-            puts "[ERROR] processing file = ${file_name}"
+            puts "[ERROR] processing file = #{file_name}"
             puts ex.message
           end
         end
