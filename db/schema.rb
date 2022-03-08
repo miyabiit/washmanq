@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002010400) do
+ActiveRecord::Schema.define(version: 20220308042812) do
 
   create_table "camera_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "camera_id", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171002010400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["camera_id"], name: "index_camera_images_on_camera_id"
+    t.index ["shooted_at"], name: "index_camera_images_on_shooted_at"
   end
 
   create_table "cameras", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

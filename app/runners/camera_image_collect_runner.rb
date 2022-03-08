@@ -20,7 +20,7 @@ class CameraImageCollectRunner
             puts ex.message
           end
         end
-        File.delete(file_name)
+        File.delete(file_name) if File.exist?(file_name)
       end
     end 
   end
